@@ -63,7 +63,7 @@
 }
 
 .container:hover .overlay{
-  width: 240%;
+  width: 500%;
 }
 
 .container:hover .menuName {

@@ -1,6 +1,5 @@
 .container {
   width: 100%;
-  padding: 10px;
   position: relative;
 }
 
@@ -34,7 +33,7 @@
 }
 
 .detailWrapper {
-  padding: 25px 16px;
+  padding: 6px 16px;
   height: 60%;
 }
 
