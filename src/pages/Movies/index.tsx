@@ -6,7 +6,7 @@ import ScrollableSection from "../../components/ScrollableSection";
 import SectionItem from "../../components/ScrollableSection/sectionItem";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+const Movies = () => {
   const navigate = useNavigate()
 
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       <ImageBanner />
       <BannerDetail />
       <BannerMask>
-        <ScrollableSection title="Highlight">
+        <ScrollableSection title="Popular Movies">
           {Array(12)
             .fill(0)
             .map((_, index) => (
@@ -26,7 +26,7 @@ const Home = () => {
                 <SectionItem>
                   <ContentCard
                     onClick={ () => navigate("/contentdetail")}
-                    title="Home"
+                    title="title"
                     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus doloribus, sit eaque inventore sed facere in itaque voluptas sequi laborum."
                     posterImage="/public/images/poster.jpg"
                     bannerImage="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/5631/1655631-i-96a171bab2b4"
@@ -40,4 +40,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Movies;

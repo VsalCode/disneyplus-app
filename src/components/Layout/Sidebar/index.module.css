@@ -47,6 +47,10 @@
   cursor: pointer;
 }
 
+.link{
+  color: white;
+}
+
 .menuIcon{
   cursor: pointer;
   font-size: 24px;

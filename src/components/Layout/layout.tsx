@@ -1,15 +1,15 @@
 import { PropsWithChildren } from 'react'
-import styles from  './index.module.css'
 import SideBar from './Sidebar/index.tsx'
 import Page from './Page/index.tsx'
+import { useOutlet } from 'react-router-dom'
 
 const Layout = (props: PropsWithChildren<unknown>) => {
-  const { children } = props
+  const outlet = useOutlet();
 
   return (
-    <div className={styles.container}>
+    <div>
       <SideBar/>
-      <Page> {children} </Page>
+      <Page> {outlet} </Page>
     </div>
   )
 }
