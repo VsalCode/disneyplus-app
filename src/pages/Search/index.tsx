@@ -5,6 +5,11 @@ import ContentCard from "../../components/ContentCard"
 const Search = () => {
   return (
     <div>
+      <div style={{ 
+        color: "rgb(15, 16, 20)",
+       }}>
+        <p>---------------</p>
+      </div>
       <div className={styles.searchBar}>
         <span className="material-symbols-outlined"> search </span>
         <input type="text" placeholder="Movies, shows dan more" />

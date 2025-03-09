@@ -3,8 +3,10 @@ import Layout from "./components/Layout/layout.tsx"
 import Home from "./pages/Home"
 import Search from "./pages/Search"
 import Movies from "./pages/Movies"
-import TvSeries from "./pages/TVSeries"
-import ContentDetail from "./pages/ContentDetail"
+import TvSeries from "./pages/TvSeries/index.tsx"
+import ContentDetail from "./pages/MoviesDetail/index.tsx"
+import MoviesDetail from "./pages/MoviesDetail/index.tsx"
+import TvSeriesDetail from "./pages/TvSeriesDetail/index.tsx"
 
 const router = createBrowserRouter([
   {
@@ -27,8 +29,12 @@ const router = createBrowserRouter([
         element: <TvSeries/>
       },
       {
-        path: "/contentdetail",
-        element: <ContentDetail/>
+        path: "/content/movies",
+        element: <MoviesDetail/>
+      },
+      {
+        path: "/content/series",
+        element: <TvSeriesDetail/>
       },
     ]
   }

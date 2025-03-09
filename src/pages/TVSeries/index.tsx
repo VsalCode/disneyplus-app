@@ -25,7 +25,7 @@ const TvSeries = () => {
               >
                 <SectionItem>
                   <ContentCard
-                    onClick={ () => navigate("/contentdetail")}
+                    onClick={ () => navigate("/content/series")}
                     title="title"
                     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus doloribus, sit eaque inventore sed facere in itaque voluptas sequi laborum."
                     posterImage="/public/images/poster.jpg"

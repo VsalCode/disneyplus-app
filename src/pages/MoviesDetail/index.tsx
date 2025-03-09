@@ -6,7 +6,7 @@ import ScrollableSection from "../../components/ScrollableSection";
 import SectionItem from "../../components/ScrollableSection/sectionItem";
 import { useNavigate } from "react-router-dom";
 
-const Movies = () => {
+const MoviesDetail = () => {
   const navigate = useNavigate()
 
   return (
@@ -14,7 +14,7 @@ const Movies = () => {
       <ImageBanner />
       <BannerDetail />
       <BannerMask>
-        <ScrollableSection title="Popular Movies">
+        <ScrollableSection title="Similar Movies">
           {Array(12)
             .fill(0)
             .map((_, index) => (
@@ -40,4 +40,4 @@ const Movies = () => {
   );
 };
 
-export default Movies;
+export default MoviesDetail;
