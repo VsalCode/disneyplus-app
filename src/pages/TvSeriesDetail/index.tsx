@@ -24,8 +24,8 @@ const TvSeriesDetail = () => {
             .fill(0)
             .map((_, index) => (
               <EpisodeItem
-                imageUrl="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/2159/1741083422159-h"
-                title="DareDevil"
+                imageUrl="https://img10.hotstar.com/image/upload/f_auto/sources/r1/cms/prod/5019/1710149025019-h"
+                title="Shogun"
                 season={1}
                 episode={2}
                 duration="1h 30m"
