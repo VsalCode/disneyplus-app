@@ -25,15 +25,17 @@
   color: white;
   font-size: 18px;
 }
-
+  
 .episodeSummary{
   font-size: 14px;
   color: white;
   line-height: 25px;
+  font-weight: 700;
+  padding: 6px 0;
 }
 
-.episodeSummary b {
-  margin: 0 6px;
+.episodeSummary span, b{
+  margin: 0 6px 0 0;
 }
 
 .desc{
