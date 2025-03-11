@@ -37,3 +37,13 @@
   grid-template-columns: repeat(7, minmax(91px, 1fr));
   margin-right: 60px;
 }
+
+.separator{
+  color: white;
+  padding: 0 0 30px 0;
+}
+
+.separator2{
+  color: white;
+  padding: 50px 0 30px 0;
+}

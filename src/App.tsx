@@ -4,7 +4,6 @@ import Home from "./pages/Home"
 import Search from "./pages/Search"
 import Movies from "./pages/Movies"
 import TvSeries from "./pages/TvSeries/index.tsx"
-import ContentDetail from "./pages/MoviesDetail/index.tsx"
 import MoviesDetail from "./pages/MoviesDetail/index.tsx"
 import TvSeriesDetail from "./pages/TvSeriesDetail/index.tsx"
 
@@ -44,7 +43,7 @@ function App() {
   
   return (
     <>
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
     </>
   )
 }
