@@ -40,7 +40,7 @@ const Home = () => {
           {!loading && (data?.results ?? []).map((content: any) => (
               <SectionItem key={content.id}>
                 <ContentCard
-                  onClick={() => navigate("/contentdetail")}
+                  onClick={() => navigate(`/${content.media_type === 'movie' ? 'movie' : 'tv'}`)}
                   title={content.title || content.name}
                   description={content.overview}
                   posterImage={`https://image.tmdb.org/t/p/w500/${content.poster_path}`}

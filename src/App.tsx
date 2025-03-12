@@ -28,11 +28,11 @@ const router = createBrowserRouter([
         element: <TvSeries/>
       },
       {
-        path: "/content/movies",
+        path: "/movie/:id",
         element: <MoviesDetail/>
       },
       {
-        path: "/content/series",
+        path: "/tv/:id",
         element: <TvSeriesDetail/>
       },
     ]

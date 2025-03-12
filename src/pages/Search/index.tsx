@@ -13,7 +13,7 @@ const Search = () => {
   const { data: movieData, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${debouncedSearch}`);
   const { data: tvData, loading: tvLoading } = useFetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${debouncedSearch}`);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setSearch(e.target.value);
   };
 
