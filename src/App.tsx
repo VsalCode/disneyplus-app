@@ -8,6 +8,7 @@ import MoviesDetail from "./pages/MoviesDetail/index.tsx"
 import TvSeriesDetail from "./pages/TvSeriesDetail/index.tsx"
 import Login from "./pages/Login/index.tsx"
 import "./firebase"
+import SignUp from "./pages/SIgnUp/index.tsx"
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>
+      },
+      {
+        path: "/signup",
+        element: <SignUp/>
       },
     ]
   }
