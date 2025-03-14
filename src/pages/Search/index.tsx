@@ -3,12 +3,15 @@ import ContentCard from "../../components/ContentCard";
 import useFetch from "../../hooks/useFetch";
 import { useState } from "react";
 import useDebounce from "../../hooks/useDebounce";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
   const API_KEY = import.meta.env.VITE_API_KEY;
   const [search, setSearch] = useState("");
 
   const debouncedSearch = useDebounce(search)
+  const navigate = useNavigate()
+
 
   const { data: movieData, loading: movieLoading } = useFetch(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${debouncedSearch}`);
   const { data: tvData, loading: tvLoading } = useFetch(`https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${debouncedSearch}`);
@@ -53,6 +56,7 @@ const Search = () => {
             {movieData?.results &&
               movieData.results.map((movieItem: any) => (
                 <ContentCard
+                  onClick={() => navigate(`/movie/${movieItem.id}`)}
                   key={movieItem.id}
                   title={movieItem.title}
                   description={movieItem.overview}
@@ -69,6 +73,7 @@ const Search = () => {
               tvData.results.length > 0 &&
               tvData.results.map((tvItem: any) => (
                 <ContentCard
+                  onClick={() => navigate(`/tv/${tvItem.id}`)}
                   title={tvItem.name}
                   description={tvItem.overview}
                   posterImage={`https://image.tmdb.org/t/p/w342/${tvItem.poster_path}`}

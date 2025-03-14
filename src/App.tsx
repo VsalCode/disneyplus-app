@@ -6,6 +6,8 @@ import Movies from "./pages/Movies"
 import TvSeries from "./pages/TvSeries/index.tsx"
 import MoviesDetail from "./pages/MoviesDetail/index.tsx"
 import TvSeriesDetail from "./pages/TvSeriesDetail/index.tsx"
+import Login from "./pages/Login/index.tsx"
+import "./firebase"
 
 const router = createBrowserRouter([
   {
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/tv/:id",
         element: <TvSeriesDetail/>
+      },
+      {
+        path: "/login",
+        element: <Login/>
       },
     ]
   }
