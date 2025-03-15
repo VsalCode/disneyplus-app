@@ -1,31 +1,16 @@
 import React, { useState } from "react";
 import styles from './index.module.css'
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState("")
-  const nav = useNavigate()
+  const { createUser, error, loading } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const auth = getAuth()
-
-    try {
-      setError("")
-      setLoading(true)
-      const credentials = await createUserWithEmailAndPassword(auth, email, password)
-      console.log(credentials);
-
-      nav("/login")
-    } catch (error: any) {
-      setError(error.message)
-    }
-    setLoading(false)
-  };
+    await createUser(email, password)
+  }
 
   return (
     <div className={styles.container}>
