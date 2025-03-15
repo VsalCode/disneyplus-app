@@ -8,18 +8,24 @@ import { useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import useGenres from "../../hooks/useGenres";
 import useMapGenreId from "../../hooks/useMapGenreId";
+import useAuthState from "../../hooks/useAuthState";
 
 const Home = () => {
   const API_KEY = import.meta.env.VITE_API_KEY
 
   const navigate = useNavigate()
   const { loading, data } = useFetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`)
+
+  const auth = useAuthState()
+  const sectionTitle = auth && auth.email 
+  ? `Hi ${auth.email}, Recommended for you:` 
+  : "Recommended for you";
+
   
   const { genres } = useGenres()
-
   const firstContent = data?.results?.[0] || {}
-
   const genreNames = firstContent.genre_ids ? useMapGenreId(firstContent.genre_ids, genres) : []
+  
 
 
   return (
@@ -36,7 +42,7 @@ const Home = () => {
       language={firstContent.original_language}
       />
       <BannerMask>
-        <ScrollableSection title="Trendings">
+        <ScrollableSection title={sectionTitle}>
           {!loading && (data?.results ?? []).map((content: any) => (
               <SectionItem key={content.id}>
                 <ContentCard

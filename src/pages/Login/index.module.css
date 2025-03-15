@@ -41,3 +41,7 @@
 .formWrapper > button:hover{
   background-color: #062794;
 } 
+
+.errorText{
+  color: red;
+}

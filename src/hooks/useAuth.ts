@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth"
 import { useState } from "react"
 
 interface Params{
@@ -19,6 +19,7 @@ const useAuth = (params: Params = {}) => {
       setError("")
       setLoading(true)
       const response = await createUserWithEmailAndPassword(auth, email, password)
+      setLoading(false)
       if(typeof onSuccess === "function"){
         onSuccess(response.user)
       }
@@ -32,11 +33,40 @@ const useAuth = (params: Params = {}) => {
     }
   }
   
-  const login = (email: string, password: string) => {
+  const login = async (email: string, password: string) => {
+    try {
+      setLoading(true)
+      const auth =  getAuth()
+      setError("")
+      const response = await signInWithEmailAndPassword(auth, email, password)
+      setLoading(false)
+      if(typeof onSuccess === "function"){
+        onSuccess(response.user)
+      }
+    } catch (error: any) {
+      setError(error.message)
+      setLoading(false)
+      if(typeof onError === "function"){
+        onError(error.message)
+      }
+    }
+
   }
 
   
-  const logout = () => {}
+  const logout = async () => {
+    
+    try {
+      setLoading(true)
+      const auth =  getAuth()
+      await signOut(auth)
+      setError("")
+    } catch (error) {
+      setError(error.message)
+      setLoading(false)
+    }
+
+  }
 
   return{
     createUser,

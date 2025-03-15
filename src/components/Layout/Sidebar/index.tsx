@@ -5,24 +5,40 @@ import { Link } from "react-router-dom";
 
 interface MenuItemProps{
   icon: string,
-  url: string
+  url: string,
+  onClick: () => void,
+}
+
+interface SideBarProps{
+  onLogout: () => void
 }
 
 const MenuItem = (props: PropsWithChildren<MenuItemProps>) => {
-  const { children, icon, url } = props;
+  const { children, icon, url, onClick } = props;
 
 
   return (
     <li className={styles.menuItem} >
-      <Link to={url} className={styles.link}>
-      <span className={clsx (["material-symbols-outlined", styles.menuIcon]) }>{icon}</span>
-      <span className={styles.menuName}> {children} </span>
-      </Link>
+      { url ? (
+        <>
+          <Link to={url} className={styles.link}>
+            <span className={clsx (["material-symbols-outlined", styles.menuIcon]) }>{icon}</span>
+            <span className={styles.menuName}> {children} </span>
+          </Link>
+        </>
+      ) : (
+        < >
+          <span onClick={onClick} className={clsx (["material-symbols-outlined", styles.menuIcon]) }>{icon}</span>
+          <span onClick={onClick} className={styles.menuName}> {children} </span>
+        </>
+      ) }
     </li>
   );
 };
 
-const SideBar = () => {
+const SideBar = (props: SideBarProps) => {
+  const { onLogout } = props
+
   return ( 
     <nav className={styles.container}>
       <img width="45px" className={styles.logo} src="/public/images/disney-plus-hotstar-logo.svg" alt="" />
@@ -31,6 +47,7 @@ const SideBar = () => {
         <MenuItem url="/" icon="home" >Home</MenuItem>
         <MenuItem url="/movies" icon="movie" >Movies</MenuItem>
         <MenuItem url="/tvseries" icon="tv" >Series</MenuItem>
+        <MenuItem onClick={onLogout} icon="logout" >Logout</MenuItem>
       </ul>
       <div className={styles.overlay}></div>
     </nav>

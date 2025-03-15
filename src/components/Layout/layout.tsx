@@ -1,14 +1,18 @@
-import { PropsWithChildren } from 'react'
 import SideBar from './Sidebar/index.tsx'
 import Page from './Page/index.tsx'
 import { useOutlet } from 'react-router-dom'
+import useAuth from '../../hooks/useAuth.ts';
 
-const Layout = (props: PropsWithChildren<unknown>) => {
+const Layout = () => {
   const outlet = useOutlet();
+  const { logout } = useAuth()
+  const handleLogout = () => {
+    logout()
+  }
 
   return (
     <div>
-      <SideBar/>
+      <SideBar onLogout={handleLogout}/>
       <Page> {outlet} </Page>
     </div>
   )
