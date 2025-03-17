@@ -12,51 +12,46 @@ import SignUp from "./pages/SIgnUp/index.tsx"
 
 const router = createBrowserRouter([
   {
-    element: <Layout/>,
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    element: <Layout />,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: "/search",
-        element: <Search/>
+        element: <Search />,
       },
       {
         path: "/movies",
-        element: <Movies/>
+        element: <Movies />,
       },
       {
         path: "/tvseries",
-        element: <TvSeries/>
+        element: <TvSeries />,
       },
       {
         path: "/movie/:id",
-        element: <MoviesDetail/>
+        element: <MoviesDetail />,
       },
       {
         path: "/tv/:id",
-        element: <TvSeriesDetail/>
+        element: <TvSeriesDetail />,
       },
-      {
-        path: "/login",
-        element: <Login/>
-      },
-      {
-        path: "/signup",
-        element: <SignUp/>
-      },
-    ]
-  }
-])
+    ],
+  },
+]);
 
 function App() {
-  
-  return (
-    <>
-          <RouterProvider router={router} />
-    </>
-  )
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;

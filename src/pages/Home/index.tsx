@@ -17,8 +17,8 @@ const Home = () => {
   const { loading, data } = useFetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}`)
 
   const auth = useAuthState()
-  const sectionTitle = auth && auth.email 
-  ? `Hi ${auth.email}, Recommended for you:` 
+  const sectionTitle = auth && auth.displayName 
+  ? `Hi ${auth.displayName}, Recommended for you:` 
   : "Recommended for you";
 
   

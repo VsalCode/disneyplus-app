@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 import styles from "./index.module.css";
 import clsx from "clsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 interface MenuItemProps{
   icon: string,
@@ -38,6 +38,13 @@ const MenuItem = (props: PropsWithChildren<MenuItemProps>) => {
 
 const SideBar = (props: SideBarProps) => {
   const { onLogout } = props
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    onLogout(); // Memanggil fungsi logout
+    navigate("/login"); // Redirect ke halaman login
+  };
+
 
   return ( 
     <nav className={styles.container}>
@@ -47,7 +54,7 @@ const SideBar = (props: SideBarProps) => {
         <MenuItem url="/" icon="home" >Home</MenuItem>
         <MenuItem url="/movies" icon="movie" >Movies</MenuItem>
         <MenuItem url="/tvseries" icon="tv" >Series</MenuItem>
-        <MenuItem onClick={onLogout} icon="logout" >Logout</MenuItem>
+        <MenuItem onClick={handleLogout} icon="logout" >Logout</MenuItem>
       </ul>
       <div className={styles.overlay}></div>
     </nav>

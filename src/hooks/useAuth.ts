@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth"
 import { useState } from "react"
 
 interface Params{
@@ -13,13 +13,19 @@ const useAuth = (params: Params = {}) => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
-  const createUser = async (email: string, password: string) => {
+  const createUser = async (email: string, password: string, name: string) => {
     const auth = getAuth()
     try {
       setError("")
       setLoading(true)
       const response = await createUserWithEmailAndPassword(auth, email, password)
       setLoading(false)
+      if(auth.currentUser){
+        updateProfile(auth.currentUser, { 
+          displayName: name
+         } )
+      }
+
       if(typeof onSuccess === "function"){
         onSuccess(response.user)
       }
@@ -61,7 +67,7 @@ const useAuth = (params: Params = {}) => {
       const auth =  getAuth()
       await signOut(auth)
       setError("")
-    } catch (error) {
+    } catch (error: any) {
       setError(error.message)
       setLoading(false)
     }

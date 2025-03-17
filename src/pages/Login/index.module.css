@@ -4,6 +4,10 @@
   justify-content: center;
   height: 100vh;
   flex-direction: column;
+  background-image: url('https://i.pinimg.com/736x/fe/f5/b7/fef5b7e04088e78f24685581159d5577.jpg'); /* Path gambar */
+  background-size: cover; /* Menyesuaikan gambar agar penuh */
+  background-position: center; /* Pusatkan gambar */
+  background-repeat: no-repeat; /* Hindari gambar terulang */
 }
 
 .container > h1 {
