@@ -4,6 +4,14 @@
   justify-content: center;
   height: 100vh;
   flex-direction: column;
+  background-image: linear-gradient(6deg, rgba(13,17,26,1) 29%, rgba(33,48,112,1) 100%); 
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+}
+
+.logo{
+  margin-bottom: 25px;
 }
 
 .container > h1 {
@@ -29,7 +37,7 @@
   border-radius: 3px;
 }
 
-.formWrapper > button {
+.signupButton {
   height: 40%;
   font-size: 15px;
   background-color: #095ae6;
@@ -38,9 +46,27 @@
   border-radius: 5px;
 }
 
-.formWrapper > button:hover{
+.signupButton:hover{
   background-color: #062794;
 } 
+
+.RedirectToLoginButton{
+  height: 40px;
+  width: 170px;
+  margin-top: 30px;
+  font-size: 14px;
+  background-color: #252833;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.RedirectToLoginButton:hover{
+  background-color: #2e313d;
+  color: #ffffff;
+  font-weight: 500;
+}
 
 .errorText{
   margin-top: 15px;

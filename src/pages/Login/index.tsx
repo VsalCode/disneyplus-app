@@ -21,7 +21,9 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <img width="60px" className={styles.logo} src="/public/images/disney-plus-hotstar-logo.svg" alt="" />
       <h1>Login Page</h1>
+      <h4>welcome back!</h4>
       <form action="" onSubmit={handleSubmit} className={styles.formWrapper}>
         <input 
         onChange={(e) => setEmail(e.target.value)} 

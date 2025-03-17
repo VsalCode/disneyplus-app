@@ -41,8 +41,8 @@ const SideBar = (props: SideBarProps) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    onLogout(); // Memanggil fungsi logout
-    navigate("/login"); // Redirect ke halaman login
+    onLogout(); 
+    navigate("/signup"); 
   };
 
 
