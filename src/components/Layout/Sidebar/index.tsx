@@ -2,15 +2,17 @@ import { PropsWithChildren } from "react";
 import styles from "./index.module.css";
 import clsx from "clsx";
 import { Link, useNavigate } from "react-router-dom";
+import { User } from "firebase/auth";
 
 interface MenuItemProps{
   icon: string,
-  url: string,
-  onClick: () => void,
+  url?: string,
+  onClick?: () => void,
 }
 
 interface SideBarProps{
   onLogout: () => void
+  user: User | null;
 }
 
 const MenuItem = (props: PropsWithChildren<MenuItemProps>) => {
@@ -18,26 +20,33 @@ const MenuItem = (props: PropsWithChildren<MenuItemProps>) => {
 
 
   return (
-    <li className={styles.menuItem} >
-      { url ? (
-        <>
-          <Link to={url} className={styles.link}>
-            <span className={clsx (["material-symbols-outlined", styles.menuIcon]) }>{icon}</span>
-            <span className={styles.menuName}> {children} </span>
-          </Link>
-        </>
-      ) : (
-        < >
-          <span onClick={onClick} className={clsx (["material-symbols-outlined", styles.menuIcon]) }>{icon}</span>
-          <span onClick={onClick} className={styles.menuName}> {children} </span>
-        </>
-      ) }
-    </li>
+    <li className={styles.menuItem}>
+    {url ? (
+      <Link to={url} className={styles.link}>
+        <span
+          className={clsx(["material-symbols-outlined", styles.menuIcon])}
+        >
+          {icon}
+        </span>
+        <span className={styles.menuName}>{children}</span>
+      </Link>
+    ) : (
+      <>
+        <span
+          onClick={onClick}
+          className={clsx(["material-symbols-outlined", styles.menuIcon])}
+        >
+          {icon}
+        </span>
+        <span className={styles.menuName}>{children}</span>
+      </>
+    )}
+  </li>
   );
 };
 
 const SideBar = (props: SideBarProps) => {
-  const { onLogout } = props
+  const { onLogout, user } = props
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -50,6 +59,11 @@ const SideBar = (props: SideBarProps) => {
     <nav className={styles.container}>
       <img width="45px" className={styles.logo} src="/public/images/disney-plus-hotstar-logo.svg" alt="" />
       <ul className={styles.menuWrapper}>
+      {!user && (
+          <MenuItem url="/login" icon="account_circle">
+            Login
+          </MenuItem>
+        )}
         <MenuItem url="/search" icon="search" >Search</MenuItem>
         <MenuItem url="/" icon="home" >Home</MenuItem>
         <MenuItem url="/movies" icon="movie" >Movies</MenuItem>

@@ -2,20 +2,24 @@ import SideBar from './Sidebar/index.tsx'
 import Page from './Page/index.tsx'
 import { useOutlet } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth.ts';
+import useAuthState from '../../hooks/useAuthState.ts';
 
 const Layout = () => {
   const outlet = useOutlet();
-  const { logout } = useAuth()
+  const user = useAuthState();
+  const { logout } = useAuth();
   const handleLogout = () => {
-    logout()
-  }
+    console.log("CLICKED");
+
+    logout();
+  };
 
   return (
     <div>
-      <SideBar onLogout={handleLogout}/>
-      <Page> {outlet} </Page>
+      <SideBar user={user} onLogout={handleLogout} />
+      <Page>{outlet}</Page>
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
